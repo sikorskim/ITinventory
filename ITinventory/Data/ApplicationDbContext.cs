@@ -24,5 +24,7 @@ namespace ITinventory.Data
         }
 
         public DbSet<ITinventory.Models.Manufacturer> Manufacturer { get; set; }
+
+        public DbSet<ITinventory.Models.Device> Device { get; set; }
     }
 }

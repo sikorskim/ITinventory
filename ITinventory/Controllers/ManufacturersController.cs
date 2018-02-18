@@ -54,7 +54,7 @@ namespace ITinventory.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Manufacturer manufacturer)
+        public async Task<IActionResult> Create([Bind("Id,Name,Hardware,Software")] Manufacturer manufacturer)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace ITinventory.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Manufacturer manufacturer)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Hardware,Software")] Manufacturer manufacturer)
         {
             if (id != manufacturer.Id)
             {

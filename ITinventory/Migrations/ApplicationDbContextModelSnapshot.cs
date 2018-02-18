@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
-namespace ITinventory.Data.Migrations
+namespace ITinventory.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -71,7 +71,35 @@ namespace ITinventory.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("ITinventory.Models.Manufacturer", b =>
+            modelBuilder.Entity("ITinventory.Models.Device", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("DeviceTypeId");
+
+                    b.Property<int>("ManufacturerId");
+
+                    b.Property<int>("ModelId");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("StatusId");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DeviceTypeId");
+
+                    b.HasIndex("ManufacturerId");
+
+                    b.HasIndex("StatusId");
+
+                    b.ToTable("Device");
+                });
+
+            modelBuilder.Entity("ITinventory.Models.DeviceType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -80,7 +108,35 @@ namespace ITinventory.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.ToTable("DeviceType");
+                });
+
+            modelBuilder.Entity("ITinventory.Models.Manufacturer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("Hardware");
+
+                    b.Property<string>("Name");
+
+                    b.Property<bool>("Software");
+
+                    b.HasKey("Id");
+
                     b.ToTable("Manufacturer");
+                });
+
+            modelBuilder.Entity("ITinventory.Models.Status", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Status");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -189,6 +245,24 @@ namespace ITinventory.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("ITinventory.Models.Device", b =>
+                {
+                    b.HasOne("ITinventory.Models.DeviceType", "DeviceType")
+                        .WithMany()
+                        .HasForeignKey("DeviceTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ITinventory.Models.Manufacturer", "Manufacturer")
+                        .WithMany()
+                        .HasForeignKey("ManufacturerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ITinventory.Models.Status", "Status")
+                        .WithMany()
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

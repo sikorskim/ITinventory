@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ITinventory.Controllers
+namespace ITinventory.Models
 {
-    public class DeviceParameter
+    public class LicenseType
     {
         public int Id { get; set; }
-        public int DeviceCategoryId { get; set; }
+        [DisplayName("Nazwa")]
         public string Name { get; set; }
-        public string Value { get; set; }
     }
 }
