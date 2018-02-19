@@ -23,5 +23,9 @@ namespace ITinventory.Models
         public string UserId { get; set; }
         [DisplayName("Nazwa")]
         public string Name { get; set; }
+        [DisplayName("Nr faktury")]
+        public string InvoiceId { get; set; }
+        [ForeignKey("InvoiceId")]
+        public virtual Invoice Invoice { get; set; }
     }
 }

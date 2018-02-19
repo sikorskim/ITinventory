@@ -23,8 +23,18 @@ namespace ITinventory.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
-        public DbSet<ITinventory.Models.Manufacturer> Manufacturer { get; set; }
-
+        public DbSet<ITinventory.Models.Address> Address { get; set; }
         public DbSet<ITinventory.Models.Device> Device { get; set; }
+        public DbSet<ITinventory.Models.DeviceParameter> DeviceParameter { get; set; }
+        public DbSet<ITinventory.Models.DeviceType> DeviceType { get; set; }
+        public DbSet<ITinventory.Models.Invoice> Invoice { get; set; }
+        public DbSet<ITinventory.Models.License> License { get; set; }
+        public DbSet<ITinventory.Models.LicenseType> LicenseType { get; set; }
+        public DbSet<ITinventory.Models.Localization> Localization { get; set; }
+        public DbSet<ITinventory.Models.Manufacturer> Manufacturer { get; set; }
+        public DbSet<ITinventory.Models.Software> Software { get; set; }
+        public DbSet<ITinventory.Models.SoftwareType> SoftwareType{ get; set; }
+        public DbSet<ITinventory.Models.Status> Status { get; set; }
+        public DbSet<ITinventory.Models.Supplier> Supplier { get; set; }
     }
 }

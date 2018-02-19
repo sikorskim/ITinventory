@@ -10,8 +10,8 @@ namespace ITinventory.Models
     public class DeviceParameter
     {
         public int Id { get; set; }
-        public int DeviceCategoryId { get; set; }
-        [ForeignKey("DeviceCategoryId")]
+        public int DeviceTypeId { get; set; }
+        [ForeignKey("DeviceTypeId")]
         public virtual DeviceType DeviceType { get; set; }
         [DisplayName("Nazwa")]
         public string Name { get; set; }
