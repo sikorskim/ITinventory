@@ -11,9 +11,10 @@ using System;
 namespace ITinventory.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180220132850_migr3")]
+    partial class migr3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,46 +92,6 @@ namespace ITinventory.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("ITinventory.Models.Company", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AddressId");
-
-                    b.Property<string>("Email");
-
-                    b.Property<string>("NIP");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<string>("REGON");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AddressId");
-
-                    b.ToTable("Company");
-                });
-
-            modelBuilder.Entity("ITinventory.Models.Department", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("CompanyId");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.ToTable("Department");
-                });
-
             modelBuilder.Entity("ITinventory.Models.Device", b =>
                 {
                     b.Property<int>("Id")
@@ -149,8 +110,6 @@ namespace ITinventory.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("InvoiceId");
-
-                    b.HasIndex("ModelId");
 
                     b.HasIndex("StatusId");
 
@@ -185,6 +144,8 @@ namespace ITinventory.Migrations
                     b.Property<int>("DeviceTypeId");
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("Value");
 
                     b.HasKey("Id");
 
@@ -282,15 +243,9 @@ namespace ITinventory.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("DepartmentId");
-
-                    b.Property<int>("DepatmentId");
-
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DepartmentId");
 
                     b.ToTable("Localization");
                 });
@@ -362,13 +317,9 @@ namespace ITinventory.Migrations
 
                     b.Property<int>("AddressId");
 
-                    b.Property<string>("Email");
-
                     b.Property<string>("NIP");
 
                     b.Property<string>("Name");
-
-                    b.Property<string>("PhoneNumber");
 
                     b.Property<string>("REGON");
 
@@ -487,32 +438,11 @@ namespace ITinventory.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("ITinventory.Models.Company", b =>
-                {
-                    b.HasOne("ITinventory.Models.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("ITinventory.Models.Department", b =>
-                {
-                    b.HasOne("ITinventory.Models.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("ITinventory.Models.Device", b =>
                 {
                     b.HasOne("ITinventory.Models.Invoice", "Invoice")
                         .WithMany()
                         .HasForeignKey("InvoiceId");
-
-                    b.HasOne("ITinventory.Models.DeviceModel", "DeviceModel")
-                        .WithMany()
-                        .HasForeignKey("ModelId")
-                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("ITinventory.Models.Status", "Status")
                         .WithMany()
@@ -573,13 +503,6 @@ namespace ITinventory.Migrations
                         .WithMany()
                         .HasForeignKey("LicenseId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("ITinventory.Models.Localization", b =>
-                {
-                    b.HasOne("ITinventory.Models.Department", "Department")
-                        .WithMany()
-                        .HasForeignKey("DepartmentId");
                 });
 
             modelBuilder.Entity("ITinventory.Models.Software", b =>

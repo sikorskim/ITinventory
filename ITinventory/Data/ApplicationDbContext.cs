@@ -25,10 +25,12 @@ namespace ITinventory.Data
 
         public DbSet<ITinventory.Models.Address> Address { get; set; }
         public DbSet<ITinventory.Models.Device> Device { get; set; }
+        public DbSet<ITinventory.Models.DeviceModel> DeviceModel { get; set; }
         public DbSet<ITinventory.Models.DeviceParameter> DeviceParameter { get; set; }
         public DbSet<ITinventory.Models.DeviceType> DeviceType { get; set; }
         public DbSet<ITinventory.Models.Invoice> Invoice { get; set; }
         public DbSet<ITinventory.Models.License> License { get; set; }
+        public DbSet<ITinventory.Models.LicenseDevice> LicenseDevice { get; set; }
         public DbSet<ITinventory.Models.LicenseType> LicenseType { get; set; }
         public DbSet<ITinventory.Models.Localization> Localization { get; set; }
         public DbSet<ITinventory.Models.Manufacturer> Manufacturer { get; set; }

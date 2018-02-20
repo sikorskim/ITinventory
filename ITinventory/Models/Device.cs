@@ -10,13 +10,9 @@ namespace ITinventory.Models
     public class Device
     {
         public int Id { get; set; }
-        public int DeviceTypeId { get; set; }
-        [ForeignKey("DeviceTypeId")]
-        public virtual DeviceType DeviceType { get; set; }
-        public int ManufacturerId { get; set; }
-        [ForeignKey("ManufacturerId")]
-        public virtual Manufacturer Manufacturer { get; set; }
         public int ModelId { get; set; }
+        [ForeignKey("ModelId")]
+        public virtual DeviceModel DeviceModel { get; set; }
         public int StatusId { get; set; }
         [ForeignKey("StatusId")]
         public virtual Status Status { get; set; }

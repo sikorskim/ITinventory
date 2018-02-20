@@ -15,7 +15,5 @@ namespace ITinventory.Models
         public virtual DeviceType DeviceType { get; set; }
         [DisplayName("Nazwa")]
         public string Name { get; set; }
-        [DisplayName("Wartość")]
-        public string Value { get; set; }
     }
 }

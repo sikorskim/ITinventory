@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace ITinventory.Models
 {
-    public class Supplier
-    {
+    public class Company
+    {       
         public int Id { get; set; }
         [DisplayName("Nazwa")]
-        public string Name{ get; set; }
+        public string Name { get; set; }
         public string NIP { get; set; }
         public string REGON { get; set; }
         public int AddressId { get; set; }

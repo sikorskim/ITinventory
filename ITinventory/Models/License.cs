@@ -16,6 +16,10 @@ namespace ITinventory.Models
         public int SoftwareId { get; set; }
         [ForeignKey("SoftwareId")]
         public virtual Software Software { get; set; }
+        [DisplayName("Ilość urządzeń")]
+        public int Quantity { get; set; }
+        [DisplayName("Wykorzystane")]
+        public virtual int Used { get; set; }
         [DisplayName("Ważność od")]
         public DateTime ValidFrom { get; set; }
         [DisplayName("Ważność do")]
