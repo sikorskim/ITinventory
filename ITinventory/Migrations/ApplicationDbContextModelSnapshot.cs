@@ -138,6 +138,8 @@ namespace ITinventory.Migrations
 
                     b.Property<string>("InvoiceId");
 
+                    b.Property<int>("LocalizationId");
+
                     b.Property<int>("ModelId");
 
                     b.Property<string>("Name");
@@ -149,6 +151,8 @@ namespace ITinventory.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("InvoiceId");
+
+                    b.HasIndex("LocalizationId");
 
                     b.HasIndex("ModelId");
 
@@ -175,6 +179,26 @@ namespace ITinventory.Migrations
                     b.HasIndex("ManufacturerId");
 
                     b.ToTable("DeviceModel");
+                });
+
+            modelBuilder.Entity("ITinventory.Models.DeviceModelParameter", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ModelId");
+
+                    b.Property<int>("ParameterId");
+
+                    b.Property<string>("Value");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ModelId");
+
+                    b.HasIndex("ParameterId");
+
+                    b.ToTable("DeviceModelParameter");
                 });
 
             modelBuilder.Entity("ITinventory.Models.DeviceParameter", b =>
@@ -509,6 +533,11 @@ namespace ITinventory.Migrations
                         .WithMany()
                         .HasForeignKey("InvoiceId");
 
+                    b.HasOne("ITinventory.Models.Localization", "Localization")
+                        .WithMany()
+                        .HasForeignKey("LocalizationId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("ITinventory.Models.DeviceModel", "DeviceModel")
                         .WithMany()
                         .HasForeignKey("ModelId")
@@ -530,6 +559,19 @@ namespace ITinventory.Migrations
                     b.HasOne("ITinventory.Models.Manufacturer", "Manufacturer")
                         .WithMany()
                         .HasForeignKey("ManufacturerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ITinventory.Models.DeviceModelParameter", b =>
+                {
+                    b.HasOne("ITinventory.Models.DeviceModel", "DeviceModel")
+                        .WithMany()
+                        .HasForeignKey("ModelId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ITinventory.Models.DeviceParameter", "DeviceParameter")
+                        .WithMany()
+                        .HasForeignKey("ParameterId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

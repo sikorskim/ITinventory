@@ -26,6 +26,7 @@ namespace ITinventory.Data
         public DbSet<ITinventory.Models.Address> Address { get; set; }
         public DbSet<ITinventory.Models.Device> Device { get; set; }
         public DbSet<ITinventory.Models.DeviceModel> DeviceModel { get; set; }
+        public DbSet<ITinventory.Models.DeviceModelParameter> DeviceModelParameter { get; set; }
         public DbSet<ITinventory.Models.DeviceParameter> DeviceParameter { get; set; }
         public DbSet<ITinventory.Models.DeviceType> DeviceType { get; set; }
         public DbSet<ITinventory.Models.Invoice> Invoice { get; set; }
@@ -38,5 +39,7 @@ namespace ITinventory.Data
         public DbSet<ITinventory.Models.SoftwareType> SoftwareType{ get; set; }
         public DbSet<ITinventory.Models.Status> Status { get; set; }
         public DbSet<ITinventory.Models.Supplier> Supplier { get; set; }
+        public DbSet<ITinventory.Models.Company> Company { get; set; }
+        public DbSet<ITinventory.Models.Department> Department { get; set; }
     }
 }

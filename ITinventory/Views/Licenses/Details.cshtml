@@ -1,0 +1,54 @@
+﻿@model ITinventory.Models.License
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>License</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Used)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Used)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ValidFrom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ValidFrom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ValidTo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ValidTo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LicenseType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LicenseType.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Software)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Software.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

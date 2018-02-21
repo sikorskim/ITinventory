@@ -30,19 +30,35 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li class="dropdown"><a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Settings</a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li><a asp-area="" asp-controller="Devices" asp-action="Index">Devices</a></li>
-                                <li><a asp-area="" asp-controller="Manufacturers" asp-action="Index">Manufacturers</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Strona główna</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">O programie</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Kontakt</a></li>
+                    <li><a asp-area="" asp-controller="Devices" asp-action="Index">Urządzenia</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Settings
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+                            <li><a asp-area="" asp-controller="Addresses" asp-action="Index">Adresy</a></li>
+                            <li><a asp-area="" asp-controller="DeviceModels" asp-action="Index">Modele urządzeń</a></li>
+                            <li><a asp-area="" asp-controller="DeviceModelParameters" asp-action="Index">Parametry modeli urządzeń</a></li>
+                            <li><a asp-area="" asp-controller="DeviceParameters" asp-action="Index">Parametry urządzeń</a></li>
+                            <li><a asp-area="" asp-controller="DeviceTypes" asp-action="Index">Typy urządzeń</a></li>
+                            <li><a asp-area="" asp-controller="Invoices" asp-action="Index">Faktury</a></li>
+                            <li><a asp-area="" asp-controller="Licenses" asp-action="Index">Licencje</a></li>
+                            <li><a asp-area="" asp-controller="LicenseDevices" asp-action="Index">Licencje urządzenia</a></li>
+                            <li><a asp-area="" asp-controller="LicenseTypes" asp-action="Index">Typy licencji</a></li>
+                            <li><a asp-area="" asp-controller="Manufacturers" asp-action="Index">Producenci</a></li>
+                            <li><a asp-area="" asp-controller="Softwares" asp-action="Index">Oprogramownie</a></li>
+                            <li><a asp-area="" asp-controller="SoftwareTypes" asp-action="Index">Typy oprogramownia</a></li>
+                            <li><a asp-area="" asp-controller="Suppliers" asp-action="Index">Dostawcy</a></li>
+                            <li><a asp-area="" asp-controller="Status" asp-action="Index">Statusy</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a asp-area="" asp-controller="Companies" asp-action="Index">Firmy</a></li>
+                            <li><a asp-area="" asp-controller="Departments" asp-action="Index">Działy</a></li>
+                            <li><a asp-area="" asp-controller="Localizations" asp-action="Index">Lokalizacje</a></li>
+                        </ul>
                     </li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")

@@ -23,5 +23,8 @@ namespace ITinventory.Models
         public string InvoiceId { get; set; }
         [ForeignKey("InvoiceId")]
         public virtual Invoice Invoice { get; set; }
+        public int LocalizationId { get; set; }
+        [ForeignKey("LocalizationId")]
+        public virtual Localization Localization { get; set; }
     }
 }

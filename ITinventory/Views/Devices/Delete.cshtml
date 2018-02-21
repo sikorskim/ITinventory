@@ -12,12 +12,6 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ModelId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ModelId)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.UserId)
         </dt>
         <dd>
@@ -30,16 +24,22 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.DeviceType)
+            @Html.DisplayNameFor(model => model.DeviceModel)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.DeviceType.Id)
+            @Html.DisplayFor(model => model.DeviceModel.Id)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Manufacturer)
+            @Html.DisplayNameFor(model => model.Invoice)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Manufacturer.Id)
+            @Html.DisplayFor(model => model.Invoice.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Localization)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Localization.Id)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Status)
