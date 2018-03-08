@@ -22,5 +22,8 @@ namespace ITinventory.Models
         public string PhoneNumber { get; set; }
         [EmailAddress]
         public string Email { get; set; }
+
+        public Company()
+        { }
     }
 }

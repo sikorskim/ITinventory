@@ -15,5 +15,8 @@ namespace ITinventory.Models
         public bool Hardware { get; set; }
         [DisplayName("Oprogramowanie")]
         public bool Software { get; set; }
+
+        public Manufacturer()
+        { }
     }
 }

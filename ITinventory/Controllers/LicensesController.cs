@@ -49,8 +49,8 @@ namespace ITinventory.Controllers
         // GET: Licenses/Create
         public IActionResult Create()
         {
-            ViewData["LicenseTypeId"] = new SelectList(_context.LicenseType, "Id", "Id");
-            ViewData["SoftwareId"] = new SelectList(_context.Software, "Id", "Id");
+            ViewData["LicenseTypeId"] = new SelectList(_context.LicenseType, "Id", "Name");
+            ViewData["SoftwareId"] = new SelectList(_context.Software, "Id", "Name");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace ITinventory.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["LicenseTypeId"] = new SelectList(_context.LicenseType, "Id", "Id", license.LicenseTypeId);
-            ViewData["SoftwareId"] = new SelectList(_context.Software, "Id", "Id", license.SoftwareId);
+            ViewData["LicenseTypeId"] = new SelectList(_context.LicenseType, "Id", "Name", license.LicenseTypeId);
+            ViewData["SoftwareId"] = new SelectList(_context.Software, "Id", "Name", license.SoftwareId);
             return View(license);
         }
 

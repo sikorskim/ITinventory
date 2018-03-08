@@ -49,8 +49,8 @@ namespace ITinventory.Controllers
         // GET: DeviceModelParameters/Create
         public IActionResult Create()
         {
-            ViewData["ModelId"] = new SelectList(_context.DeviceModel, "Id", "Id");
-            ViewData["ParameterId"] = new SelectList(_context.DeviceParameter, "Id", "Id");
+            ViewData["ModelId"] = new SelectList(_context.DeviceModel, "Id", "Name");
+            ViewData["ParameterId"] = new SelectList(_context.DeviceParameter, "Id", "Name");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace ITinventory.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ModelId"] = new SelectList(_context.DeviceModel, "Id", "Id", deviceModelParameter.ModelId);
-            ViewData["ParameterId"] = new SelectList(_context.DeviceParameter, "Id", "Id", deviceModelParameter.ParameterId);
+            ViewData["ModelId"] = new SelectList(_context.DeviceModel, "Id", "Name", deviceModelParameter.ModelId);
+            ViewData["ParameterId"] = new SelectList(_context.DeviceParameter, "Id", "Name", deviceModelParameter.ParameterId);
             return View(deviceModelParameter);
         }
 

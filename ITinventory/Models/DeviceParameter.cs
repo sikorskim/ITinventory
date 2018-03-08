@@ -15,5 +15,8 @@ namespace ITinventory.Models
         public virtual DeviceType DeviceType { get; set; }
         [DisplayName("Nazwa")]
         public string Name { get; set; }
+
+        public DeviceParameter()
+        { }
     }
 }

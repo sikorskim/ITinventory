@@ -10,10 +10,13 @@ namespace ITinventory.Models
     public class Localization
     {
         public int Id { get; set; }
-        public int DepatmentId { get; set; }
+        public int DepartmentId { get; set; }
         [ForeignKey("DepartmentId")]
         public virtual Department Department { get; set; }
         [DisplayName("Nazwa")]
         public string Name { get; set; }
+
+        public Localization()
+        { }
     }
 }

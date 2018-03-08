@@ -12,17 +12,23 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.UserId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceModel.DeviceType.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceModel.Manufacturer.Name)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.DeviceModel)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Invoice)
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayName("Dział")
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Localization)
@@ -37,22 +43,28 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DeviceModel.Id)
+                @Html.DisplayFor(modelItem => item.DeviceModel.DeviceType.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Invoice.Id)
+                @Html.DisplayFor(modelItem => item.DeviceModel.Manufacturer.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Localization.Id)
+                @Html.DisplayFor(modelItem => item.DeviceModel.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Status.Id)
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localization.Department.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localization.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status.Name)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

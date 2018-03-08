@@ -18,5 +18,8 @@ namespace ITinventory.Models
         public virtual SoftwareType SoftwareType{ get; set; }
         [DisplayName("Id")]
         public string Name { get; set; }
+
+        public Software()
+        { }
     }
 }

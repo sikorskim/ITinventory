@@ -49,8 +49,8 @@ namespace ITinventory.Controllers
         // GET: DeviceModels/Create
         public IActionResult Create()
         {
-            ViewData["DeviceTypeId"] = new SelectList(_context.DeviceType, "Id", "Id");
-            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturer, "Id", "Id");
+            ViewData["DeviceTypeId"] = new SelectList(_context.DeviceType, "Id", "Name");
+            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturer, "Id", "Name");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace ITinventory.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DeviceTypeId"] = new SelectList(_context.DeviceType, "Id", "Id", deviceModel.DeviceTypeId);
-            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturer, "Id", "Id", deviceModel.ManufacturerId);
+            ViewData["DeviceTypeId"] = new SelectList(_context.DeviceType, "Id", "Name", deviceModel.DeviceTypeId);
+            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturer, "Id", "Name", deviceModel.ManufacturerId);
             return View(deviceModel);
         }
 
@@ -85,8 +85,8 @@ namespace ITinventory.Controllers
             {
                 return NotFound();
             }
-            ViewData["DeviceTypeId"] = new SelectList(_context.DeviceType, "Id", "Id", deviceModel.DeviceTypeId);
-            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturer, "Id", "Id", deviceModel.ManufacturerId);
+            ViewData["DeviceTypeId"] = new SelectList(_context.DeviceType, "Id", "Name", deviceModel.DeviceTypeId);
+            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturer, "Id", "Name", deviceModel.ManufacturerId);
             return View(deviceModel);
         }
 
@@ -122,8 +122,8 @@ namespace ITinventory.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DeviceTypeId"] = new SelectList(_context.DeviceType, "Id", "Id", deviceModel.DeviceTypeId);
-            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturer, "Id", "Id", deviceModel.ManufacturerId);
+            ViewData["DeviceTypeId"] = new SelectList(_context.DeviceType, "Id", "Name", deviceModel.DeviceTypeId);
+            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturer, "Id", "Name", deviceModel.ManufacturerId);
             return View(deviceModel);
         }
 

@@ -49,8 +49,8 @@ namespace ITinventory.Controllers
         // GET: LicenseDevices/Create
         public IActionResult Create()
         {
-            ViewData["DeviceId"] = new SelectList(_context.Device, "Id", "Id");
-            ViewData["LicenseId"] = new SelectList(_context.License, "Id", "Id");
+            ViewData["DeviceId"] = new SelectList(_context.Device, "Id", "Name");
+            ViewData["LicenseId"] = new SelectList(_context.License, "Id", "Name");
             return View();
         }
 

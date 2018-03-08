@@ -24,5 +24,8 @@ namespace ITinventory.Models
         public DateTime ValidFrom { get; set; }
         [DisplayName("Ważność do")]
         public DateTime ValidTo { get; set; }
+
+        public License()
+        { }
     }
 }

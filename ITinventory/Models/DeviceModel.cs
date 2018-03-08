@@ -14,9 +14,14 @@ namespace ITinventory.Models
         public string Name { get; set; }
         public int ManufacturerId { get; set; }
         [ForeignKey("ManufacturerId")]
+        [DisplayName("Producent")]
         public virtual Manufacturer Manufacturer { get; set; }
         public int DeviceTypeId { get; set; }
         [ForeignKey("DeviceTypeId")]
+        [DisplayName("Typ")]
         public virtual DeviceType DeviceType { get; set; }
+
+        public DeviceModel()
+        { }
     }
 }

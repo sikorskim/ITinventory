@@ -18,5 +18,8 @@ namespace ITinventory.Models
         public virtual DeviceParameter DeviceParameter { get; set; }
         [DisplayName("Wartość")]
         public string Value { get; set; }
+
+        public DeviceModelParameter()
+        { }
     }
 }

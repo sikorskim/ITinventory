@@ -22,7 +22,7 @@ namespace ITinventory.Controllers
         // GET: Devices
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Device.Include(d => d.DeviceModel).Include(d => d.Invoice).Include(d => d.Localization).Include(d => d.Status);
+            var applicationDbContext = _context.Device.Include(d => d.DeviceModel).Include(d => d.Invoice).Include(d => d.Localization).Include(d => d.Status).Include(d=>d.Localization.Department).Include(d=>d.DeviceModel.Manufacturer).Include(d=>d.DeviceModel.DeviceType);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -51,10 +51,10 @@ namespace ITinventory.Controllers
         // GET: Devices/Create
         public IActionResult Create()
         {
-            ViewData["ModelId"] = new SelectList(_context.DeviceModel, "Id", "Id");
-            ViewData["InvoiceId"] = new SelectList(_context.Invoice, "Id", "Id");
-            ViewData["LocalizationId"] = new SelectList(_context.Localization, "Id", "Id");
-            ViewData["StatusId"] = new SelectList(_context.Status, "Id", "Id");
+            ViewData["ModelId"] = new SelectList(_context.DeviceModel, "Id", "Name");
+            ViewData["InvoiceId"] = new SelectList(_context.Invoice, "Id", "Number");
+            ViewData["LocalizationId"] = new SelectList(_context.Localization, "Id", "Name");
+            ViewData["StatusId"] = new SelectList(_context.Status, "Id", "Name");
             return View();
         }
 
@@ -71,10 +71,10 @@ namespace ITinventory.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ModelId"] = new SelectList(_context.DeviceModel, "Id", "Id", device.ModelId);
+            ViewData["ModelId"] = new SelectList(_context.DeviceModel, "Id", "Name", device.ModelId);
             ViewData["InvoiceId"] = new SelectList(_context.Invoice, "Id", "Id", device.InvoiceId);
-            ViewData["LocalizationId"] = new SelectList(_context.Localization, "Id", "Id", device.LocalizationId);
-            ViewData["StatusId"] = new SelectList(_context.Status, "Id", "Id", device.StatusId);
+            ViewData["LocalizationId"] = new SelectList(_context.Localization, "Id", "Name", device.LocalizationId);
+            ViewData["StatusId"] = new SelectList(_context.Status, "Id", "Name", device.StatusId);
             return View(device);
         }
 

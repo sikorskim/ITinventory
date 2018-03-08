@@ -20,6 +20,9 @@ namespace ITinventory.Models
         [DisplayName("Miejscowość")]
         public string City { get; private set; }
 
+        public Address()
+        { }
+
         public Address(string street, string buldingNumber, string localNumber, string postalCode, string city)
         {
             Street = street;

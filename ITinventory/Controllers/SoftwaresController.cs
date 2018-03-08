@@ -49,8 +49,8 @@ namespace ITinventory.Controllers
         // GET: Softwares/Create
         public IActionResult Create()
         {
-            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturer, "Id", "Id");
-            ViewData["SoftwareTypeId"] = new SelectList(_context.SoftwareType, "Id", "Id");
+            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturer, "Id", "Name");
+            ViewData["SoftwareTypeId"] = new SelectList(_context.SoftwareType, "Id", "Name");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace ITinventory.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturer, "Id", "Id", software.ManufacturerId);
-            ViewData["SoftwareTypeId"] = new SelectList(_context.SoftwareType, "Id", "Id", software.SoftwareTypeId);
+            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturer, "Id", "Name", software.ManufacturerId);
+            ViewData["SoftwareTypeId"] = new SelectList(_context.SoftwareType, "Id", "Name", software.SoftwareTypeId);
             return View(software);
         }
 
@@ -85,8 +85,8 @@ namespace ITinventory.Controllers
             {
                 return NotFound();
             }
-            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturer, "Id", "Id", software.ManufacturerId);
-            ViewData["SoftwareTypeId"] = new SelectList(_context.SoftwareType, "Id", "Id", software.SoftwareTypeId);
+            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturer, "Id", "Name", software.ManufacturerId);
+            ViewData["SoftwareTypeId"] = new SelectList(_context.SoftwareType, "Id", "Name", software.SoftwareTypeId);
             return View(software);
         }
 
@@ -122,8 +122,8 @@ namespace ITinventory.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturer, "Id", "Id", software.ManufacturerId);
-            ViewData["SoftwareTypeId"] = new SelectList(_context.SoftwareType, "Id", "Id", software.SoftwareTypeId);
+            ViewData["ManufacturerId"] = new SelectList(_context.Manufacturer, "Id", "Name", software.ManufacturerId);
+            ViewData["SoftwareTypeId"] = new SelectList(_context.SoftwareType, "Id", "Name", software.SoftwareTypeId);
             return View(software);
         }
 

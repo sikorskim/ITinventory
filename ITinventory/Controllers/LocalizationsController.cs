@@ -54,7 +54,7 @@ namespace ITinventory.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DepatmentId,Name")] Localization localization)
+        public async Task<IActionResult> Create([Bind("Id,DepartmentId,Name")] Localization localization)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace ITinventory.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DepatmentId,Name")] Localization localization)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DepartmentId,Name")] Localization localization)
         {
             if (id != localization.Id)
             {

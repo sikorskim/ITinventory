@@ -16,5 +16,8 @@ namespace ITinventory.Models
         public int DeviceId { get; set; }
         [ForeignKey("DeviceId")]
         public virtual Device Device { get; set; }
+
+        public LicenseDevice()
+        { }
     }
 }

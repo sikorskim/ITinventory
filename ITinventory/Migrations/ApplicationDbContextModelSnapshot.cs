@@ -136,7 +136,7 @@ namespace ITinventory.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("InvoiceId");
+                    b.Property<int>("InvoiceId");
 
                     b.Property<int>("LocalizationId");
 
@@ -231,10 +231,13 @@ namespace ITinventory.Migrations
 
             modelBuilder.Entity("ITinventory.Models.Invoice", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("DateOfIssue");
+
+                    b.Property<string>("Number")
+                        .IsRequired();
 
                     b.Property<int>("SupplierId");
 
@@ -306,9 +309,7 @@ namespace ITinventory.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("DepartmentId");
-
-                    b.Property<int>("DepatmentId");
+                    b.Property<int>("DepartmentId");
 
                     b.Property<string>("Name");
 
@@ -531,7 +532,8 @@ namespace ITinventory.Migrations
                 {
                     b.HasOne("ITinventory.Models.Invoice", "Invoice")
                         .WithMany()
-                        .HasForeignKey("InvoiceId");
+                        .HasForeignKey("InvoiceId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("ITinventory.Models.Localization", "Localization")
                         .WithMany()
@@ -621,7 +623,8 @@ namespace ITinventory.Migrations
                 {
                     b.HasOne("ITinventory.Models.Department", "Department")
                         .WithMany()
-                        .HasForeignKey("DepartmentId");
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ITinventory.Models.Software", b =>

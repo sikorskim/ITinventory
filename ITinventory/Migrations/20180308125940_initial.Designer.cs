@@ -11,7 +11,7 @@ using System;
 namespace ITinventory.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180221123437_initial")]
+    [Migration("20180308125940_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -137,7 +137,9 @@ namespace ITinventory.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("InvoiceId");
+                    b.Property<int>("InvoiceId");
+
+                    b.Property<int>("LocalizationId");
 
                     b.Property<int>("ModelId");
 
@@ -150,6 +152,8 @@ namespace ITinventory.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("InvoiceId");
+
+                    b.HasIndex("LocalizationId");
 
                     b.HasIndex("ModelId");
 
@@ -228,10 +232,13 @@ namespace ITinventory.Migrations
 
             modelBuilder.Entity("ITinventory.Models.Invoice", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("DateOfIssue");
+
+                    b.Property<string>("Number")
+                        .IsRequired();
 
                     b.Property<int>("SupplierId");
 
@@ -528,7 +535,13 @@ namespace ITinventory.Migrations
                 {
                     b.HasOne("ITinventory.Models.Invoice", "Invoice")
                         .WithMany()
-                        .HasForeignKey("InvoiceId");
+                        .HasForeignKey("InvoiceId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ITinventory.Models.Localization", "Localization")
+                        .WithMany()
+                        .HasForeignKey("LocalizationId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("ITinventory.Models.DeviceModel", "DeviceModel")
                         .WithMany()

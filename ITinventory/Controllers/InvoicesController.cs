@@ -27,7 +27,7 @@ namespace ITinventory.Controllers
         }
 
         // GET: Invoices/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -57,7 +57,7 @@ namespace ITinventory.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DateOfIssue,SupplierId")] Invoice invoice)
+        public async Task<IActionResult> Create([Bind("Id,Number,DateOfIssue,SupplierId")] Invoice invoice)
         {
             if (ModelState.IsValid)
             {
@@ -70,7 +70,7 @@ namespace ITinventory.Controllers
         }
 
         // GET: Invoices/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -91,7 +91,7 @@ namespace ITinventory.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,DateOfIssue,SupplierId")] Invoice invoice)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Number,DateOfIssue,SupplierId")] Invoice invoice)
         {
             if (id != invoice.Id)
             {
@@ -123,7 +123,7 @@ namespace ITinventory.Controllers
         }
 
         // GET: Invoices/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -144,7 +144,7 @@ namespace ITinventory.Controllers
         // POST: Invoices/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var invoice = await _context.Invoice.SingleOrDefaultAsync(m => m.Id == id);
             _context.Invoice.Remove(invoice);
@@ -152,7 +152,7 @@ namespace ITinventory.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool InvoiceExists(string id)
+        private bool InvoiceExists(int id)
         {
             return _context.Invoice.Any(e => e.Id == id);
         }

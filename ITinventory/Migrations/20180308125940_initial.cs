@@ -384,8 +384,10 @@ namespace ITinventory.Migrations
                 name: "Invoice",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DateOfIssue = table.Column<DateTime>(nullable: false),
+                    Number = table.Column<string>(nullable: false),
                     SupplierId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -417,7 +419,7 @@ namespace ITinventory.Migrations
                         column: x => x.ModelId,
                         principalTable: "DeviceModel",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DeviceModelParameter_DeviceParameter_ParameterId",
                         column: x => x.ParameterId,
@@ -483,7 +485,8 @@ namespace ITinventory.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    InvoiceId = table.Column<string>(nullable: true),
+                    InvoiceId = table.Column<int>(nullable: false),
+                    LocalizationId = table.Column<int>(nullable: false),
                     ModelId = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     StatusId = table.Column<int>(nullable: false),
@@ -497,7 +500,13 @@ namespace ITinventory.Migrations
                         column: x => x.InvoiceId,
                         principalTable: "Invoice",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Device_Localization_LocalizationId",
+                        column: x => x.LocalizationId,
+                        principalTable: "Localization",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Device_DeviceModel_ModelId",
                         column: x => x.ModelId,
@@ -529,7 +538,7 @@ namespace ITinventory.Migrations
                         column: x => x.DeviceId,
                         principalTable: "Device",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_LicenseDevice_License_LicenseId",
                         column: x => x.LicenseId,
@@ -591,6 +600,11 @@ namespace ITinventory.Migrations
                 name: "IX_Device_InvoiceId",
                 table: "Device",
                 column: "InvoiceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Device_LocalizationId",
+                table: "Device",
+                column: "LocalizationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Device_ModelId",
@@ -697,9 +711,6 @@ namespace ITinventory.Migrations
                 name: "LicenseDevice");
 
             migrationBuilder.DropTable(
-                name: "Localization");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
@@ -715,10 +726,10 @@ namespace ITinventory.Migrations
                 name: "License");
 
             migrationBuilder.DropTable(
-                name: "Department");
+                name: "Invoice");
 
             migrationBuilder.DropTable(
-                name: "Invoice");
+                name: "Localization");
 
             migrationBuilder.DropTable(
                 name: "DeviceModel");
@@ -733,10 +744,10 @@ namespace ITinventory.Migrations
                 name: "Software");
 
             migrationBuilder.DropTable(
-                name: "Company");
+                name: "Supplier");
 
             migrationBuilder.DropTable(
-                name: "Supplier");
+                name: "Department");
 
             migrationBuilder.DropTable(
                 name: "DeviceType");
@@ -746,6 +757,9 @@ namespace ITinventory.Migrations
 
             migrationBuilder.DropTable(
                 name: "SoftwareType");
+
+            migrationBuilder.DropTable(
+                name: "Company");
 
             migrationBuilder.DropTable(
                 name: "Address");
